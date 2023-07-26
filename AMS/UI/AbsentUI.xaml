@@ -1,0 +1,84 @@
+﻿<local:BaseUI x:Class="AMS.UI.AbsentUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AMS.UI"
+             xmlns:command="clr-namespace:AMS.Tool"
+             mc:Ignorable="d" 
+              Title="Absen"
+              Loaded="BaseUI_Loaded"
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <Grid Background="{StaticResource MainBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.CommandBindings>
+            <CommandBinding Command="command:CustomCommand.Check" CanExecute="Save_CanExecute" Executed="Save_Executed" />
+        </Grid.CommandBindings>
+        <Rectangle Fill="{StaticResource TopMenuPanelBrush}" StrokeThickness="0" Grid.ColumnSpan="3"/>
+        <TextBlock Margin="0,0,10,0"  HorizontalAlignment="Right" Style="{StaticResource TextBlockTitleTextStyle}" Grid.Column="2">Karyawan | <Bold>Absen</Bold></TextBlock>
+        <Grid Grid.Row="1" Background="{StaticResource MediumBaseBrush}" Width="900" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition />
+
+            </Grid.RowDefinitions>
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Image x:Name="ImageUpload" Width="auto" Height="300" Source="{Binding ImagePath}"></Image>
+                <Button Content="Upload" x:Name="ButtonImage" Click="ButtonImage_Click" VerticalAlignment="Bottom"
+                    VerticalContentAlignment="Bottom" HorizontalAlignment="Center" Grid.Column="2" Grid.Row="4"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition />
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+
+                </Grid.ColumnDefinitions>
+                <Label Content="Nama Lengkap" Margin="5" Style="{StaticResource LabelStyle}" HorizontalAlignment="Left"/>
+                <TextBox x:Name="TextName" Grid.Row="1" Width="125" Margin="5" Text="{Binding Path=FullName,UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" HorizontalAlignment="Left"/>
+
+                <Label Content="Status" Grid.Column="1" Margin="20,5,0,5" Style="{StaticResource LabelStyle}"/>
+                <TextBox x:Name="TextStatus" Grid.Row="1" Grid.Column="1" Width="125" IsEnabled="False" Margin="25,5,0,5" Text="{Binding Path=Status,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"/>
+                <Label Content="Waktu" Grid.Column="2" Margin="20,5,0,5" Style="{StaticResource LabelStyle}"/>
+                <TextBox x:Name="TextTime" Grid.Row="1" Grid.Column="2" Width="125" IsEnabled="False" Margin="25,5,0,5" Text="{Binding Path=Time,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"/>
+                <Button x:Name="Submit" Content="{Binding Content,UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" Grid.Row="1" 
+                        VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5"  Command="command:CustomCommand.Check">
+                </Button>
+
+            </Grid>
+            <StackPanel Grid.Row="2" Orientation="Horizontal"  Margin="5">
+                <Label Content="Histori Absensi"  Margin="5" Style="{StaticResource LabelStyle}"/>
+                <DatePicker Name="DatePicker" LostFocus="DatePicker_LostFocus" SelectedDate="{Binding Date,UpdateSourceTrigger=PropertyChanged}" Margin="5" Width="125" HorizontalAlignment="Left"/>
+            </StackPanel>
+
+            <DataGrid x:Name="GridAbsent" Grid.Row="3" Margin="5" Style="{StaticResource MaterialDesignDataGrid}" RowHeaderStyle="{StaticResource MaterialDesignDataGridRowHeader}"
+                      ColumnHeaderStyle="{StaticResource MaterialDesignDataGridColumnHeader}" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Masuk" Binding="{Binding CheckIn}" Width="*"/>
+                    <DataGridTextColumn Header="Keluar" Binding="{Binding CheckOut}" Width="*"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+
+    </Grid>
+</local:BaseUI>

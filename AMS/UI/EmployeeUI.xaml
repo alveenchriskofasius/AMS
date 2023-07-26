@@ -1,0 +1,33 @@
+﻿<local:BaseUI x:Class="AMS.UI.EmployeeUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AMS.UI"
+             Title="Karyawan"
+             Loaded="BaseUI_Loaded"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <Grid Background="{StaticResource MainBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Fill="{StaticResource TopMenuPanelBrush}" StrokeThickness="0" Grid.ColumnSpan="3"/>
+        <TextBlock Margin="0,0,10,0"  HorizontalAlignment="Right" Style="{StaticResource TextBlockTitleTextStyle}" Grid.Column="2">Master | <Bold>Karyawan</Bold></TextBlock>
+        <local:EmployeeSelectorUI x:Name="EmployeeSelector" SearchClicked="EmployeeSelector_SearchClicked" AddEmployee="EmployeeSelector_AddEmployee" Grid.Row="1" Margin="5"></local:EmployeeSelectorUI>
+        <Rectangle Name="PanelOverlay" Grid.Row="1" Fill="#FF404A60" Visibility="Collapsed" MouseUp="PanelOverlay_MouseUp" ></Rectangle>
+
+        <Grid Grid.RowSpan="2" Name="PanelSearch" Margin="0,768,0,-768" Visibility="Collapsed" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <local:EmployeeGridUI x:Name="EmployeeGrid" RowDoubleClicked="EmployeeGrid_RowDoubleClicked" Grid.Row="1"  />
+        </Grid>
+
+    </Grid>
+
+</local:BaseUI>

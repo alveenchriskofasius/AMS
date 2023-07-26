@@ -1,0 +1,23 @@
+﻿<Window x:Class="AMS.UI.PhotoUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AMS.UI"
+             mc:Ignorable="d" 
+            Loaded="Window_Loaded"
+        Closing="Window_Closing"
+        MinHeight="200" MaxHeight="400" MinWidth="200" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen"
+             d:DesignHeight="450" d:DesignWidth="200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Image 
+            x:Name="ImageView"
+            Height="auto" Width="auto"
+            MinHeight="200" 
+            MinWidth="200" />
+    </Grid>
+</Window>
