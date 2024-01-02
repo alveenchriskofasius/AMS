@@ -51,9 +51,6 @@
                     <ColumnDefinition Width="auto"/>
 
                 </Grid.ColumnDefinitions>
-                <Label Content="Nama Lengkap" Margin="5" Style="{StaticResource LabelStyle}" HorizontalAlignment="Left"/>
-                <TextBox x:Name="TextName" Grid.Row="1" Width="125" Margin="5" Text="{Binding Path=FullName,UpdateSourceTrigger=PropertyChanged}" IsEnabled="False" HorizontalAlignment="Left"/>
-
                 <Label Content="Status" Grid.Column="1" Margin="20,5,0,5" Style="{StaticResource LabelStyle}"/>
                 <TextBox x:Name="TextStatus" Grid.Row="1" Grid.Column="1" Width="125" IsEnabled="False" Margin="25,5,0,5" Text="{Binding Path=Status,UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left"/>
                 <Label Content="Waktu" Grid.Column="2" Margin="20,5,0,5" Style="{StaticResource LabelStyle}"/>
